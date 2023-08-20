@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title> MANTENIMIENTO MARCA </title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+      type= "text/css" />
+  
+</head>
+<body>
+   <div class="container my-2">
+     <h1>Lista de Marcas de Electrodomesticos</h1>
+     <a th:href = "@{/nuevoMarca}" class="btn btn-primary btn-sm mb-3">Nueva Marca</a>
+     
+     <table border="1" class="table table-atriped table-resonsive-md">
+       <thead>
+       <tr>
+         <th>Id</th>
+         <th>Marca</th>
+         <th>Acciones</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each ="marca : ${listadoMarca}">
+          <td th:text="${marca.idmarca}"></td>
+          <td th:text="${marca.nommarca}"></td>       
+          <td>
+          
+            <a th:href = "@{/actualizarMarca/} + ${marca.idmarca} " class="btn btn-primary">Editar</a>
+            <a th:href = "@{/eliminarMarca/} + ${marca.nommarca} " class="btn btn-danger">Eliminar</a>
+          </td>
+       </tr>
+       </tbody>
+     </table>
+     
+   </div>
+</body>
+</html>

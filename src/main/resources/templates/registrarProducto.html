@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Mi Primer CRUD JPA, Repository, Hibernate y MYSQL</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+   <div class="container my-2">
+     <h1>Registro de Productos</h1>
+  
+     <form th:action="@{/guardarProducto}" th:object="${producto}" method="post">
+       ID:<br/>
+       <input type="text" th:field="*{idproducto}" placeholder="Ingrese id" class="form-control mb-4 col-4"/>
+       PRODUCTO:<br/>
+       <input type="text" th:field="*{nomproducto}" placeholder="Ingrese nombre" class="form-control mb-4 col-4"/>
+       MARCA:<br/> 
+       <select class="form-control" name="cbo_marca" th:field="*{idmarca}">
+         <option th:each="marca:${marca}"
+          th:value = "${marca.idmarca}"
+          th:text = "${marca.nommarca}"></option>
+       </select>
+       <br/> 
+       MODELO:<br/>     
+       <input type="text" th:field="*{modeloproducto}" placeholder="Ingrese modelo" class="form-control mb-4 col-4"/>
+       CANTIDAD:<br/>
+       <input type="text" th:field="*{cantproducto}" placeholder="Ingrese cantidad" class="form-control mb-4 col-4"/>
+       CATEGORIA:<br/>
+       <select class="form-control" name="cbo_cat" th:field="*{idcategoria}">
+         <option th:each="categoriaProducto:${categoriaProducto}"
+          th:value = "${categoriaProducto.idcategoria}"
+          th:text = "${categoriaProducto.nomcategoria}"></option>
+       </select>
+       <br/>  
+       COSTO:<br/>
+       <input type="text" th:field="*{costoalmacenaje}" placeholder="Ingrese costo de almacenaje" class="form-control mb-4 col-4"/>
+       
+      
+       <button type="submit" class="btn btn-info col-2">Registrar</button>
+     </form>
+   </div>
+</body>
+</html>
+
+
+
+

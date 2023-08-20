@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title> MANTENIMIENTO CATEGORIA PRODUCTO </title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+      type= "text/css" />
+  
+</head>
+<body>
+   <div class="container my-2">
+     <h1>Lista de Empresas de Transporte</h1>
+     <a th:href = "@{/nuevoEmpresaTransporte}" class="btn btn-primary btn-sm mb-3">Nuevo</a>
+     
+     <table border="1" class="table table-atriped table-resonsive-md">
+       <thead>
+       <tr>
+         <th>Id</th>
+         <th>Razon Social</th>
+         <th>RUC</th>
+         <th>Acciones</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each ="empresaTransporte : ${listadoEmpresaTransporte}">
+          <td th:text="${empresaTransporte.idempresatransporte}"></td>
+          <td th:text="${empresaTransporte.razonsocialtransporte}"></td>
+          <td th:text="${empresaTransporte.ruc}"></td>      
+          <td>
+            <a th:href = "@{/actualizarEmpresaTransporte/} + ${empresaTransporte.idempresatransporte} " class="btn btn-primary">Editar</a>
+            <a th:href = "@{/eliminarEmpresaTransporte/} + ${empresaTransporte.idempresatransporte} " class="btn btn-danger">Eliminar</a>
+          </td>
+       </tr>
+       </tbody>
+     </table>
+     
+   </div>
+</body>
+</html>
